@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IRONFORM — Train With Purpose</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -13,8 +13,8 @@
     --dark: #111111;
     --card: #161616;
     --border: rgba(255,255,255,0.07);
-    --white: #f5f5f5;
-    --muted: #888;
+    --white: #fcfcfc;
+    --muted: #999;
     --red: #e8341c;
     --red-dim: rgba(232,52,28,0.12);
   }
@@ -24,7 +24,7 @@
   body {
     background: var(--black);
     color: var(--white);
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 300;
     overflow-x: hidden;
   }
@@ -41,13 +41,16 @@
     background: rgba(8,8,8,0.85);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
+    transition: padding 0.3s;
   }
   .nav-logo {
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
     font-size: 1.8rem;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.08em;
     color: var(--white);
     text-decoration: none;
+    text-transform: uppercase;
   }
   .nav-logo span { color: var(--red); }
   .nav-links {
@@ -58,8 +61,9 @@
   .nav-links a {
     color: var(--muted);
     text-decoration: none;
-    font-size: 0.82rem;
-    letter-spacing: 0.08em;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    font-weight: 500;
     text-transform: uppercase;
     transition: color 0.2s;
   }
@@ -69,9 +73,9 @@
     color: var(--white);
     text-decoration: none;
     font-size: 0.78rem;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 600;
     padding: 0.75rem 1.8rem;
     transition: opacity 0.2s;
   }
@@ -90,10 +94,21 @@
   .hero-bg {
     position: absolute;
     inset: 0;
-    background:
-      radial-gradient(ellipse at 70% 50%, rgba(232,52,28,0.1) 0%, transparent 55%),
-      radial-gradient(ellipse at 20% 80%, rgba(232,52,28,0.05) 0%, transparent 40%);
+    background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1920');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    filter: contrast(1.2) brightness(0.8);
     z-index: 0;
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 70% 50%, rgba(232,52,28,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse at 20% 80%, rgba(232,52,28,0.08) 0%, transparent 50%),
+      linear-gradient(to bottom, transparent 50%, var(--black) 100%);
   }
   .hero-grid-overlay {
     position: absolute;
@@ -102,7 +117,7 @@
       linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
     background-size: 60px 60px;
-    z-index: 0;
+    z-index: 1;
   }
   .hero-content { position: relative; z-index: 2; max-width: 900px; }
   .hero-tag {
@@ -113,7 +128,8 @@
     border: 1px solid rgba(232,52,28,0.3);
     padding: 0.45rem 1rem;
     font-size: 0.72rem;
-    letter-spacing: 0.15em;
+    font-weight: 500;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--red);
     margin-bottom: 2.5rem;
@@ -128,17 +144,19 @@
     animation: blink 1.5s infinite;
   }
   .hero-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(6rem, 13vw, 14rem);
-    line-height: 0.88;
-    letter-spacing: 0.04em;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: clamp(4.5rem, 11vw, 12rem);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
     margin-bottom: 2.5rem;
     opacity: 0;
     animation: fadeUp 0.8s 0.4s forwards;
   }
   .hero-title .line2 { color: var(--red); -webkit-text-stroke: 0px; }
   .hero-title .outline {
-    -webkit-text-stroke: 1px rgba(245,245,245,0.25);
+    -webkit-text-stroke: 2px rgba(252,252,252,0.25);
     color: transparent;
   }
   .hero-bottom {
@@ -148,12 +166,14 @@
     margin-top: 1rem;
     opacity: 0;
     animation: fadeUp 0.8s 0.6s forwards;
+    flex-wrap: wrap;
+    gap: 2rem;
   }
   .hero-desc {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     line-height: 1.8;
     color: var(--muted);
-    max-width: 380px;
+    max-width: 400px;
   }
   .hero-actions {
     display: flex;
@@ -166,18 +186,18 @@
     background: var(--red);
     color: var(--white);
     text-decoration: none;
-    font-size: 0.82rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     padding: 1.1rem 3rem;
     transition: opacity 0.2s, transform 0.2s;
   }
   .btn-red:hover { opacity: 0.85; transform: translateY(-2px); }
   .hero-note {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     color: var(--muted);
-    letter-spacing: 0.05em;
+    letter-spacing: 0.02em;
   }
   .hero-stats {
     position: relative;
@@ -191,55 +211,65 @@
   }
   .hero-stat {
     flex: 1;
-    padding: 2rem 0;
+    padding: 2.5rem 0;
     border-right: 1px solid var(--border);
+    background: rgba(8,8,8,0.4);
+    backdrop-filter: blur(4px);
+    text-align: left;
+    padding-left: 2rem;
   }
   .hero-stat:last-child { border-right: none; }
   .stat-big {
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
     font-size: 3.5rem;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.02em;
     color: var(--white);
     line-height: 1;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.5rem;
   }
   .stat-big span { color: var(--red); }
   .stat-desc {
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--muted);
   }
 
   /* PROGRAMS */
-  .programs {
-    padding: 8rem 5rem;
-  }
+  .programs { padding: 8rem 5rem; }
   .section-top {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     margin-bottom: 4rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
   }
   .section-eyebrow {
-    font-size: 0.72rem;
-    letter-spacing: 0.25em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--red);
     margin-bottom: 1rem;
   }
   .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(3rem, 5vw, 5.5rem);
-    letter-spacing: 0.05em;
-    line-height: 1;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    text-transform: uppercase;
   }
-  .section-title .dim { color: rgba(245,245,245,0.2); }
+  .section-title .dim { color: rgba(252,252,252,0.2); }
   .view-all {
     color: var(--muted);
     text-decoration: none;
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     border-bottom: 1px solid var(--border);
     padding-bottom: 3px;
@@ -271,47 +301,61 @@
     height: 0;
     background: var(--red);
     transition: height 0.4s ease;
+    z-index: 3;
   }
   .program-card:hover::before { height: 100%; }
+  
+  .program-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    margin-bottom: 2rem;
+    border-radius: 2px;
+    opacity: 0.45;
+    transition: opacity 0.4s ease, filter 0.4s ease;
+    filter: grayscale(100%) contrast(1.1);
+  }
+  .program-card:hover .program-img {
+    opacity: 0.9;
+    filter: grayscale(15%) contrast(1.1);
+  }
   .program-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 5rem;
-    color: rgba(255,255,255,0.04);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 4rem;
+    color: rgba(255,255,255,0.03);
     line-height: 1;
     position: absolute;
     top: 1.5rem;
     right: 1.5rem;
     transition: color 0.3s;
+    z-index: 2;
   }
   .program-card:hover .program-num { color: rgba(232,52,28,0.08); }
-  .program-icon {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-  }
   .program-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2rem;
-    letter-spacing: 0.05em;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
     margin-bottom: 1rem;
-    line-height: 1;
+    line-height: 1.2;
   }
   .program-desc {
-    font-size: 0.8rem;
-    line-height: 1.8;
+    font-size: 0.85rem;
+    line-height: 1.7;
     color: var(--muted);
     margin-bottom: 2rem;
   }
-  .program-meta {
-    display: flex;
-    gap: 1.5rem;
-  }
+  .program-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; }
   .meta-item {
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: rgba(245,245,245,0.35);
+    color: rgba(252,252,252,0.4);
   }
-  .meta-item span { color: var(--red); margin-right: 0.3rem; }
+  .meta-item span { color: var(--red); margin-right: 0.4rem; font-size: 0.6rem; }
 
   /* TRAINER */
   .trainer {
@@ -324,65 +368,62 @@
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
   }
-  .trainer-visual {
-    position: relative;
-  }
+  .trainer-visual { position: relative; }
   .trainer-img {
     width: 100%;
     aspect-ratio: 3/4;
-    background: linear-gradient(160deg, #1a1a1a, #0f0f0f);
+    background-image: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=800');
+    background-size: cover;
+    background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
+    filter: grayscale(100%) contrast(1.15) brightness(0.85);
   }
   .trainer-img::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 40% 60%, rgba(232,52,28,0.1) 0%, transparent 60%);
-  }
-  .trainer-name-bg {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 14rem;
-    color: rgba(255,255,255,0.03);
-    position: absolute;
-    letter-spacing: -0.05em;
-    user-select: none;
+    background: radial-gradient(ellipse at 40% 60%, rgba(232,52,28,0.15) 0%, transparent 60%);
   }
   .trainer-badge {
     position: absolute;
     bottom: -1.5rem;
     right: -1.5rem;
     background: var(--red);
-    padding: 1.5rem;
+    padding: 1.8rem;
     text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
   }
   .trainer-badge .badge-num {
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
     font-size: 2.8rem;
     line-height: 1;
     display: block;
+    margin-bottom: 0.2rem;
   }
   .trainer-badge .badge-text {
-    font-size: 0.62rem;
-    letter-spacing: 0.15em;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    opacity: 0.8;
+    opacity: 0.9;
   }
-  .trainer-content .section-eyebrow { margin-bottom: 1rem; }
   .trainer-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(3rem, 5vw, 5rem);
-    letter-spacing: 0.05em;
-    line-height: 1;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: clamp(3rem, 8vw, 4.5rem);
+    letter-spacing: 0.02em;
+    line-height: 1.1;
     margin-bottom: 2rem;
   }
   .trainer-title .red { color: var(--red); }
   .trainer-text {
-    font-size: 0.85rem;
-    line-height: 1.9;
+    font-size: 0.95rem;
+    line-height: 1.8;
     color: var(--muted);
     margin-bottom: 1.2rem;
   }
@@ -391,23 +432,22 @@
     flex-wrap: wrap;
     gap: 0.7rem;
     margin-top: 2.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 3.5rem;
   }
   .tag {
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--muted);
     border: 1px solid var(--border);
-    padding: 0.45rem 1rem;
+    padding: 0.5rem 1.2rem;
     transition: border-color 0.2s, color 0.2s;
   }
   .tag:hover { border-color: var(--red); color: var(--red); }
 
   /* PRICING */
-  .pricing {
-    padding: 8rem 5rem;
-  }
+  .pricing { padding: 8rem 5rem; }
   .pricing-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -417,7 +457,7 @@
   .price-card {
     background: var(--card);
     border: 1px solid var(--border);
-    padding: 3rem 2.5rem;
+    padding: 3.5rem 3rem;
     position: relative;
     transition: border-color 0.3s, transform 0.3s;
   }
@@ -434,25 +474,28 @@
     transform: translateX(-50%);
     background: var(--red);
     font-size: 0.65rem;
-    letter-spacing: 0.15em;
+    font-weight: 600;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    padding: 0.35rem 1.2rem;
+    padding: 0.4rem 1.4rem;
     white-space: nowrap;
   }
   .price-plan {
-    font-size: 0.72rem;
-    letter-spacing: 0.2em;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--muted);
     margin-bottom: 1.5rem;
   }
   .price-amount {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 5rem;
-    letter-spacing: 0.02em;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 4.5rem;
+    letter-spacing: 0.01em;
     line-height: 1;
     color: var(--white);
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.5rem;
   }
   .price-amount .currency {
     font-size: 2rem;
@@ -460,64 +503,46 @@
     color: var(--red);
   }
   .price-period {
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     color: var(--muted);
-    letter-spacing: 0.1em;
+    font-weight: 500;
+    letter-spacing: 0.05em;
     margin-bottom: 2.5rem;
   }
-  .price-divider {
-    height: 1px;
-    background: var(--border);
-    margin-bottom: 2rem;
-  }
+  .price-divider { height: 1px; background: var(--border); margin-bottom: 2rem; }
   .price-features {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.9rem;
-    margin-bottom: 2.5rem;
+    gap: 1rem;
+    margin-bottom: 3rem;
   }
-  .price-features li {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    font-size: 0.82rem;
-    color: var(--muted);
-  }
-  .price-features li::before {
-    content: '✓';
-    color: var(--red);
-    font-size: 0.75rem;
-    flex-shrink: 0;
-  }
+  .price-features li { display: flex; align-items: center; gap: 0.8rem; font-size: 0.85rem; color: var(--muted); }
+  .price-features li::before { content: '✓'; color: var(--red); font-size: 0.85rem; font-weight: bold; flex-shrink: 0; }
   .price-features li.disabled { opacity: 0.35; }
-  .price-features li.disabled::before { content: '×'; color: var(--muted); }
+  .price-features li.disabled::before { content: '×'; color: var(--muted); font-weight: normal; }
   .btn-plan {
     display: block;
     text-align: center;
     text-decoration: none;
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    padding: 1rem 2rem;
+    padding: 1.1rem 2rem;
     transition: all 0.2s;
   }
-  .btn-plan.outline {
-    border: 1px solid var(--border);
-    color: var(--muted);
-  }
+  .btn-plan.outline { border: 1px solid var(--border); color: var(--muted); }
   .btn-plan.outline:hover { border-color: var(--white); color: var(--white); }
-  .btn-plan.solid {
-    background: var(--red);
-    color: var(--white);
-  }
+  .btn-plan.solid { background: var(--red); color: var(--white); }
   .btn-plan.solid:hover { opacity: 0.85; }
 
   /* CTA BANNER */
   .cta-banner {
     margin: 0 5rem 8rem;
-    background: var(--red);
+    background: linear-gradient(rgba(190, 30, 15, 0.92), rgba(190, 30, 15, 0.92)), url('https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=1920');
+    background-size: cover;
+    background-position: center;
     padding: 5rem 6rem;
     display: flex;
     align-items: center;
@@ -527,29 +552,28 @@
   }
   .cta-banner::before {
     content: 'START';
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 20rem;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 18rem;
     color: rgba(0,0,0,0.1);
     position: absolute;
     right: -2rem;
     top: 50%;
     transform: translateY(-50%);
-    letter-spacing: -0.05em;
+    letter-spacing: -0.02em;
     user-select: none;
   }
   .cta-text { position: relative; z-index: 1; }
   .cta-heading {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(3rem, 5vw, 5rem);
-    letter-spacing: 0.05em;
-    line-height: 1;
-    margin-bottom: 0.8rem;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: clamp(3rem, 8vw, 4.5rem);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 1rem;
   }
-  .cta-sub {
-    font-size: 0.85rem;
-    opacity: 0.75;
-    letter-spacing: 0.05em;
-  }
+  .cta-sub { font-size: 0.95rem; opacity: 0.9; letter-spacing: 0.02em; }
   .btn-white {
     position: relative;
     z-index: 1;
@@ -557,11 +581,11 @@
     background: var(--black);
     color: var(--white);
     text-decoration: none;
-    font-size: 0.82rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    padding: 1.2rem 3rem;
+    padding: 1.2rem 3.5rem;
     transition: background 0.2s;
     white-space: nowrap;
   }
@@ -571,38 +595,35 @@
   footer {
     background: var(--dark);
     border-top: 1px solid var(--border);
-    padding: 3rem 5rem;
+    padding: 4rem 5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
   }
   .footer-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.5rem;
-    letter-spacing: 0.12em;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    letter-spacing: 0.08em;
     color: var(--white);
     text-decoration: none;
+    text-transform: uppercase;
   }
   .footer-logo span { color: var(--red); }
-  .footer-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
+  .footer-links { display: flex; gap: 2.5rem; list-style: none; flex-wrap: wrap; }
   .footer-links a {
     color: var(--muted);
     text-decoration: none;
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     transition: color 0.2s;
   }
   .footer-links a:hover { color: var(--white); }
-  .footer-copy {
-    font-size: 0.65rem;
-    color: rgba(136,136,136,0.5);
-    letter-spacing: 0.08em;
-  }
+  .footer-copy { font-size: 0.75rem; color: rgba(153,153,153,0.5); letter-spacing: 0.05em; }
 
   /* ANIMATIONS */
   @keyframes fadeUp {
@@ -619,6 +640,49 @@
     transition: opacity 0.8s ease, transform 0.8s ease;
   }
   .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* =========================================
+     MOBILE OPTIMIZATION (MEDIA QUERIES)
+     ========================================= */
+  @media (max-width: 992px) {
+    .programs-grid { grid-template-columns: repeat(2, 1fr); }
+    .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+    .cta-banner { flex-direction: column; text-align: center; gap: 2.5rem; align-items: center; }
+    .cta-banner::before { font-size: 12rem; right: 50%; transform: translate(50%, -50%); text-align: center; width: 100%; }
+  }
+
+  @media (max-width: 768px) {
+    /* Adjust global paddings for mobile */
+    nav { padding: 1.2rem 1.5rem; }
+    .hero { padding: 8rem 1.5rem 3rem; }
+    .programs, .trainer, .pricing { padding: 5rem 1.5rem; }
+    .cta-banner { margin: 0 1.5rem 4rem; padding: 3rem 1.5rem; }
+    footer { padding: 3rem 1.5rem; flex-direction: column; text-align: center; justify-content: center; }
+
+    /* Hide nav links on mobile to keep it clean (keep logo & CTA) */
+    .nav-links { display: none; }
+    
+    /* Hero adjustments */
+    .hero-bottom { flex-direction: column; align-items: flex-start; }
+    .hero-actions { align-items: flex-start; width: 100%; }
+    .btn-red { width: 100%; text-align: center; }
+    
+    /* Stats grid into 2x2 or 1 column */
+    .hero-stats { flex-direction: column; background: rgba(8,8,8,0.6); }
+    .hero-stat { border-right: none; border-bottom: 1px solid var(--border); text-align: center; padding: 2rem 1rem; }
+    .hero-stat:last-child { border-bottom: none; }
+
+    /* Sections stacking */
+    .programs-grid, .pricing-grid { grid-template-columns: 1fr; }
+    .trainer { grid-template-columns: 1fr; gap: 4rem; text-align: center; }
+    
+    /* Adjust trainer layout for centered alignment */
+    .trainer-badge { right: 50%; transform: translateX(50%); bottom: -2rem; padding: 1.2rem 2.5rem; }
+    .trainer-tags { justify-content: center; }
+
+    /* Fix footer links centering */
+    .footer-links { justify-content: center; width: 100%; }
+  }
 </style>
 </head>
 <body>
@@ -686,8 +750,8 @@
   <div class="programs-grid reveal">
     <div class="program-card">
       <span class="program-num">01</span>
-      <div class="program-icon">🏋️</div>
-      <h3 class="program-name">Strength & Conditioning</h3>
+      <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=800" alt="Strength" class="program-img">
+      <h3 class="program-name">Strength &<br>Conditioning</h3>
       <p class="program-desc">Structured progressive overload programming built for real-world strength. Barbell-based with mobility built in.</p>
       <div class="program-meta">
         <span class="meta-item"><span>●</span>5 days/week</span>
@@ -696,8 +760,8 @@
     </div>
     <div class="program-card">
       <span class="program-num">02</span>
-      <div class="program-icon">🔥</div>
-      <h3 class="program-name">HIIT & Metabolic</h3>
+      <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800" alt="HIIT" class="program-img">
+      <h3 class="program-name">HIIT &<br>Metabolic</h3>
       <p class="program-desc">High-intensity interval training designed to torch fat and build cardiovascular endurance. 45-minute sessions, max results.</p>
       <div class="program-meta">
         <span class="meta-item"><span>●</span>6 days/week</span>
@@ -706,8 +770,8 @@
     </div>
     <div class="program-card">
       <span class="program-num">03</span>
-      <div class="program-icon">🥊</div>
-      <h3 class="program-name">Combat Fitness</h3>
+      <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=800" alt="Combat" class="program-img">
+      <h3 class="program-name">Combat<br>Fitness</h3>
       <p class="program-desc">Boxing and kickboxing fundamentals mixed with functional fitness. Full-body conditioning with a killer edge.</p>
       <div class="program-meta">
         <span class="meta-item"><span>●</span>4 days/week</span>
@@ -716,8 +780,8 @@
     </div>
     <div class="program-card">
       <span class="program-num">04</span>
-      <div class="program-icon">🧘</div>
-      <h3 class="program-name">Mobility & Recovery</h3>
+      <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=800" alt="Mobility" class="program-img">
+      <h3 class="program-name">Mobility &<br>Recovery</h3>
       <p class="program-desc">Dedicated recovery sessions using yoga, foam rolling, and breathwork. Your body needs this as much as it needs the grind.</p>
       <div class="program-meta">
         <span class="meta-item"><span>●</span>3 days/week</span>
@@ -726,8 +790,8 @@
     </div>
     <div class="program-card">
       <span class="program-num">05</span>
-      <div class="program-icon">🏃</div>
-      <h3 class="program-name">Athletic Performance</h3>
+      <img src="https://images.unsplash.com/photo-1526506114860-264627eb18d6?q=80&w=800" alt="Athletic" class="program-img">
+      <h3 class="program-name">Athletic<br>Performance</h3>
       <p class="program-desc">Speed, agility, power. Periodized programming for athletes looking to get an edge in their sport.</p>
       <div class="program-meta">
         <span class="meta-item"><span>●</span>5 days/week</span>
@@ -736,8 +800,8 @@
     </div>
     <div class="program-card">
       <span class="program-num">06</span>
-      <div class="program-icon">🍽️</div>
-      <h3 class="program-name">Nutrition Coaching</h3>
+      <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=800" alt="Nutrition" class="program-img">
+      <h3 class="program-name">Nutrition<br>Coaching</h3>
       <p class="program-desc">1-on-1 macro tracking and meal planning with our certified nutritionists. Fuel your training the right way.</p>
       <div class="program-meta">
         <span class="meta-item"><span>●</span>Weekly check-ins</span>
@@ -751,7 +815,6 @@
 <section class="trainer">
   <div class="trainer-visual reveal">
     <div class="trainer-img">
-      <span class="trainer-name-bg">A</span>
     </div>
     <div class="trainer-badge">
       <span class="badge-num">12</span>
@@ -845,7 +908,7 @@
     <li><a href="#">Contact</a></li>
     <li><a href="#">Privacy</a></li>
   </ul>
-  <p class="footer-copy">© 2025 IRONFORM. All rights reserved.</p>
+  <p class="footer-copy">© 2026 IRONFORM. All rights reserved.</p>
 </footer>
 
 <script>
